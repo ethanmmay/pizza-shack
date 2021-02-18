@@ -25,13 +25,15 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="text-dark">Pizza Shack</h2>
-                    <form class="form-inline" onsubmit="app.pizzaController.create(event)">
+                    <form class="form-inline" onsubmit="app.pizzaController.createPizza(event)">
                         <div class="form-group">
                             <input type="text" name="title" id="title" class="form-control" placeholder="Title" aria-describedby="helpId">
                             <button type="submit" class="btn btn-success">></button>
                         </div>
                     </form>
                 </div>
+            </div>
+            <div class="row" id="pizzas">
             </div>
         </div>
     </main>

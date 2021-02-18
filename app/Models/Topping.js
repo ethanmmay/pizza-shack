@@ -1,17 +1,8 @@
-import { ProxyState } from "../AppState.js";
 import {
     generateId
 } from "../Utils/generateId.js";
 
-export default class Pizza {
-    constructor({
-        title,
-        id = generateId()
-    }) {
-        this.title = title
-        this.id = id
-    }
-
+export default class Topping {
     get Template() {
         return /*html*/ `
         <div class="col-4 border-rounded shadow-lg p-3">
@@ -26,10 +17,5 @@ export default class Pizza {
             </form>
         </div>
         `
-    }
-
-    get Toppings() {
-        let template = ""
-        let toppings = ProxyState.toppings.filter(t => t.id == toppingId)
     }
 }

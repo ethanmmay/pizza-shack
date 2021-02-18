@@ -4,32 +4,31 @@ import {
 import {
     pizzaService
 } from "../Services/PizzaService.js";
-import {
-    generateId
-} from "../Utils/generateId.js";
 
 
 // Private
 function _draw() {
-    let pizzasElem = document.getElementById("pizzas")
     let template = ""
     ProxyState.pizzas.forEach(p => template += p.Template)
+    document.getElementById("pizzas").innerHTML = template
 }
 
 // Public
 export default class PizzaController {
-    // constructor() {
-    //     // _draw()
-    // }
-
-    create(event) {
-        console.log('got here')
-        event.preventDefault()
-        let form = event.target
-        let rawPizza = {
-            title: form.title.value
-        }
-        pizzaService.createPizza(rawPizza)
+    constructor() {
+        ProxyState.on("pizzas", _draw)
+        _draw()
     }
+
+    createPizza(event) {
+        event.preventDefault()
+        pizzaService.createPizza({title: event.target.title.value})
+    }
+
+    deletePizza(pizzaId) {
+        pizzaService.deletePizza(pizzaId)
+    }
+
+    
 
 }
